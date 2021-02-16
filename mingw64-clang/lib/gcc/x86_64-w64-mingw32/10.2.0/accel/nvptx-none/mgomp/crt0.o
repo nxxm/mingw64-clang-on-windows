@@ -1,0 +1,70 @@
+// BEGIN PREAMBLE
+.version 3.1
+.target sm_30
+.address_size 64
+// BEGIN GLOBAL VAR DEF: __nvptx_stacks
+.visible .shared .align 8 .u64 __nvptx_stacks[32];
+// BEGIN GLOBAL VAR DEF: __nvptx_uni
+.visible .shared .align 4 .u32 __nvptx_uni[32];
+// BEGIN GLOBAL FUNCTION DECL: __main
+.visible .entry __main (.param .u64 %in_ar0, .param .u32 %in_ar1, .param .u64 %in_ar2);
+// BEGIN GLOBAL FUNCTION DECL: main
+.extern .func (.param .u32 %value_out) main (.param .u32 %in_ar0, .param .u64 %in_ar1);
+// BEGIN GLOBAL FUNCTION DECL: exit
+.extern .func exit (.param .u32 %in_ar0);
+// END PREAMBLE
+// BEGIN GLOBAL VAR DEF: __exitval_ptr
+.visible .global .align 8 .u64 __exitval_ptr[1];
+// BEGIN VAR DEF: stack$0
+.global .align 8 .u8 stack$0[131072];
+// BEGIN GLOBAL FUNCTION DEF: __main
+.visible .entry __main (.param .u64 %in_ar0, .param .u32 %in_ar1, .param .u64 %in_ar2)
+{
+.reg .u64 %ar0;
+ld.param.u64 %ar0,[%in_ar0];
+.reg .u32 %ar1;
+ld.param.u32 %ar1,[%in_ar1];
+.reg .u64 %ar2;
+ld.param.u64 %ar2,[%in_ar2];
+.reg .u64 %r23;
+.reg .u32 %r24;
+.reg .u64 %r25;
+.reg .pred %r26;
+.reg .u32 %r27;
+.reg .u64 %r29;
+.reg .u64 %r30;
+.reg .u32 %r31;
+.reg .u32 %r34;
+mov.u64 %r23,%ar0;
+mov.u32 %r24,%ar1;
+mov.u64 %r25,%ar2;
+st.global.u64 [__exitval_ptr],%r23;
+setp.eq.u64 %r26,%r23,0;
+@ %r26 bra $L2;
+mov.u32 %r27,255;
+st.u32 [%r23],%r27;
+$L2:
+cvta.global.u64 %r29,stack$0+131072;
+st.shared.u64 [__nvptx_stacks],%r29;
+cvta.shared.u64 %r30,__nvptx_uni;
+mov.u32 %r31,0;
+st.u32 [%r30],%r31;
+{
+.param .u32 %value_in;
+.param .u32 %out_arg1;
+st.param.u32 [%out_arg1],%r24;
+.param .u64 %out_arg2;
+st.param.u64 [%out_arg2],%r25;
+call (%value_in),main,(%out_arg1,%out_arg2);
+ld.param.u32 %r34,[%value_in];
+}
+{
+.param .u32 %out_arg1;
+st.param.u32 [%out_arg1],%r34;
+call exit,(%out_arg1);
+trap;
+// (noreturn)
+exit;
+// (noreturn)
+}
+}
