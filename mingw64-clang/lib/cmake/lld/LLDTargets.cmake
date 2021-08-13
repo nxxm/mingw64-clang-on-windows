@@ -4,7 +4,7 @@ if("${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}" LESS 2.5)
    message(FATAL_ERROR "CMake >= 2.6.0 required")
 endif()
 cmake_policy(PUSH)
-cmake_policy(VERSION 2.6...3.17)
+cmake_policy(VERSION 2.6...3.18)
 #----------------------------------------------------------------
 # Generated CMake target import file.
 #----------------------------------------------------------------
@@ -51,88 +51,40 @@ if(_IMPORT_PREFIX STREQUAL "/")
 endif()
 
 # Create imported target lldCommon
-add_library(lldCommon STATIC IMPORTED)
-
-set_target_properties(lldCommon PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVM"
-)
+add_library(lldCommon SHARED IMPORTED)
 
 # Create imported target lldCore
-add_library(lldCore STATIC IMPORTED)
-
-set_target_properties(lldCore PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVM"
-)
+add_library(lldCore SHARED IMPORTED)
 
 # Create imported target lldDriver
-add_library(lldDriver STATIC IMPORTED)
-
-set_target_properties(lldDriver PROPERTIES
-  INTERFACE_LINK_LIBRARIES "lldCommon;lldCore;lldMachO;lldReaderWriter;lldYAML;LLVM"
-)
+add_library(lldDriver SHARED IMPORTED)
 
 # Create imported target lldMachO
-add_library(lldMachO STATIC IMPORTED)
-
-set_target_properties(lldMachO PROPERTIES
-  INTERFACE_LINK_LIBRARIES "lldCommon;lldCore;lldYAML;LLVM"
-)
+add_library(lldMachO SHARED IMPORTED)
 
 # Create imported target lldYAML
-add_library(lldYAML STATIC IMPORTED)
-
-set_target_properties(lldYAML PROPERTIES
-  INTERFACE_LINK_LIBRARIES "lldCore;LLVM"
-)
+add_library(lldYAML SHARED IMPORTED)
 
 # Create imported target lldReaderWriter
-add_library(lldReaderWriter STATIC IMPORTED)
-
-set_target_properties(lldReaderWriter PROPERTIES
-  INTERFACE_LINK_LIBRARIES "lldCore;LLVM"
-)
+add_library(lldReaderWriter SHARED IMPORTED)
 
 # Create imported target lld
 add_executable(lld IMPORTED)
 
 # Create imported target lldCOFF
-add_library(lldCOFF STATIC IMPORTED)
-
-set_target_properties(lldCOFF PROPERTIES
-  INTERFACE_LINK_LIBRARIES "lldCommon;LLVM"
-)
+add_library(lldCOFF SHARED IMPORTED)
 
 # Create imported target lldELF
-add_library(lldELF STATIC IMPORTED)
-
-set_target_properties(lldELF PROPERTIES
-  INTERFACE_LINK_LIBRARIES "lldCommon;LLVM"
-)
+add_library(lldELF SHARED IMPORTED)
 
 # Create imported target lldMachO2
-add_library(lldMachO2 STATIC IMPORTED)
-
-set_target_properties(lldMachO2 PROPERTIES
-  INTERFACE_LINK_LIBRARIES "lldCommon;LLVM"
-)
+add_library(lldMachO2 SHARED IMPORTED)
 
 # Create imported target lldMinGW
-add_library(lldMinGW STATIC IMPORTED)
-
-set_target_properties(lldMinGW PROPERTIES
-  INTERFACE_LINK_LIBRARIES "lldCOFF;lldCommon;LLVM"
-)
+add_library(lldMinGW SHARED IMPORTED)
 
 # Create imported target lldWasm
-add_library(lldWasm STATIC IMPORTED)
-
-set_target_properties(lldWasm PROPERTIES
-  INTERFACE_LINK_LIBRARIES "lldCommon;LLVM"
-)
-
-if(CMAKE_VERSION VERSION_LESS 2.8.12)
-  message(FATAL_ERROR "This file relies on consumers using CMake 2.8.12 or greater.")
-endif()
+add_library(lldWasm SHARED IMPORTED)
 
 # Load information for each installed configuration.
 get_filename_component(_DIR "${CMAKE_CURRENT_LIST_FILE}" PATH)

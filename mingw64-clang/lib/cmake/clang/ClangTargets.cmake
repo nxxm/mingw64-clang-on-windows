@@ -4,7 +4,7 @@ if("${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}" LESS 2.5)
    message(FATAL_ERROR "CMake >= 2.6.0 required")
 endif()
 cmake_policy(PUSH)
-cmake_policy(VERSION 2.6...3.17)
+cmake_policy(VERSION 2.6...3.18)
 #----------------------------------------------------------------
 # Generated CMake target import file.
 #----------------------------------------------------------------
@@ -16,7 +16,7 @@ set(CMAKE_IMPORT_FILE_VERSION 1)
 set(_targetsDefined)
 set(_targetsNotDefined)
 set(_expectedTargets)
-foreach(_expectedTarget clangBasic clangLex clangParse clangAST clangDynamicASTMatchers clangASTMatchers clangCrossTU clangSema clangCodeGen clangAnalysis clangEdit clangRewrite clangARCMigrate clangDriver clangSerialization clangRewriteFrontend clangFrontend clangFrontendTool clangToolingCore clangToolingInclusions clangToolingRefactoring clangToolingASTDiff clangToolingSyntax clangDependencyScanning clangTransformer clangTooling clangDirectoryWatcher clangIndex clangStaticAnalyzerCore clangStaticAnalyzerCheckers clangStaticAnalyzerFrontend clangFormat clangTesting diagtool clang clang-format clangCXXProto clangCXXLoopProto clangProtoToCXX clangLoopProtoToCXX clangLoopProtoToLLVM clangFuzzerInitialize clangHandleCXX clangHandleLLVM clang-offload-bundler clang-offload-wrapper clang-scan-deps clang-rename clang-refactor clang-check clang-extdef-mapping libclang)
+foreach(_expectedTarget clangBasic clangAPINotes clangLex clangParse clangAST clangDynamicASTMatchers clangASTMatchers clangCrossTU clangSema clangCodeGen clangAnalysis clangEdit clangRewrite clangARCMigrate clangDriver clangSerialization clangRewriteFrontend clangFrontend clangFrontendTool clangToolingCore clangToolingInclusions clangToolingRefactoring clangToolingASTDiff clangToolingSyntax clangDependencyScanning clangTransformer clangTooling clangDirectoryWatcher clangIndex clangIndexSerialization clangStaticAnalyzerCore clangStaticAnalyzerCheckers clangStaticAnalyzerFrontend clangFormat clangTesting diagtool clang clang-format clangHandleCXX clangHandleLLVM clang-offload-bundler clang-offload-wrapper clang-scan-deps clang-rename clang-refactor clang-check clang-extdef-mapping clangApplyReplacements clang-apply-replacements clangReorderFields clang-reorder-fields modularize clangTidy clangTidyAndroidModule clangTidyAbseilModule clangTidyAlteraModule clangTidyBoostModule clangTidyBugproneModule clangTidyCERTModule clangTidyConcurrencyModule clangTidyCppCoreGuidelinesModule clangTidyDarwinModule clangTidyFuchsiaModule clangTidyGoogleModule clangTidyHICPPModule clangTidyLinuxKernelModule clangTidyLLVMModule clangTidyLLVMLibcModule clangTidyMiscModule clangTidyModernizeModule clangTidyMPIModule clangTidyObjCModule clangTidyOpenMPModule clangTidyPerformanceModule clangTidyPortabilityModule clangTidyReadabilityModule clangTidyZirconModule clangTidyPlugin clangTidyMain clang-tidy clangTidyUtils clangChangeNamespace clang-change-namespace clangDoc clang-doc clangIncludeFixer clangIncludeFixerPlugin clang-include-fixer findAllSymbols find-all-symbols clangMove clang-move clangQuery clang-query pp-trace clangdSupport clangDaemon clangDaemonTweaks clangd clangdRemoteIndex libclang)
   list(APPEND _expectedTargets ${_expectedTarget})
   if(NOT TARGET ${_expectedTarget})
     list(APPEND _targetsNotDefined ${_expectedTarget})
@@ -52,6 +52,9 @@ endif()
 
 # Create imported target clangBasic
 add_library(clangBasic SHARED IMPORTED)
+
+# Create imported target clangAPINotes
+add_library(clangAPINotes SHARED IMPORTED)
 
 # Create imported target clangLex
 add_library(clangLex SHARED IMPORTED)
@@ -134,6 +137,9 @@ add_library(clangDirectoryWatcher SHARED IMPORTED)
 # Create imported target clangIndex
 add_library(clangIndex SHARED IMPORTED)
 
+# Create imported target clangIndexSerialization
+add_library(clangIndexSerialization SHARED IMPORTED)
+
 # Create imported target clangStaticAnalyzerCore
 add_library(clangStaticAnalyzerCore SHARED IMPORTED)
 
@@ -157,24 +163,6 @@ add_executable(clang IMPORTED)
 
 # Create imported target clang-format
 add_executable(clang-format IMPORTED)
-
-# Create imported target clangCXXProto
-add_library(clangCXXProto SHARED IMPORTED)
-
-# Create imported target clangCXXLoopProto
-add_library(clangCXXLoopProto SHARED IMPORTED)
-
-# Create imported target clangProtoToCXX
-add_library(clangProtoToCXX SHARED IMPORTED)
-
-# Create imported target clangLoopProtoToCXX
-add_library(clangLoopProtoToCXX SHARED IMPORTED)
-
-# Create imported target clangLoopProtoToLLVM
-add_library(clangLoopProtoToLLVM SHARED IMPORTED)
-
-# Create imported target clangFuzzerInitialize
-add_library(clangFuzzerInitialize SHARED IMPORTED)
 
 # Create imported target clangHandleCXX
 add_library(clangHandleCXX SHARED IMPORTED)
@@ -202,6 +190,165 @@ add_executable(clang-check IMPORTED)
 
 # Create imported target clang-extdef-mapping
 add_executable(clang-extdef-mapping IMPORTED)
+
+# Create imported target clangApplyReplacements
+add_library(clangApplyReplacements SHARED IMPORTED)
+
+# Create imported target clang-apply-replacements
+add_executable(clang-apply-replacements IMPORTED)
+
+# Create imported target clangReorderFields
+add_library(clangReorderFields SHARED IMPORTED)
+
+# Create imported target clang-reorder-fields
+add_executable(clang-reorder-fields IMPORTED)
+
+# Create imported target modularize
+add_executable(modularize IMPORTED)
+
+# Create imported target clangTidy
+add_library(clangTidy SHARED IMPORTED)
+
+# Create imported target clangTidyAndroidModule
+add_library(clangTidyAndroidModule SHARED IMPORTED)
+
+# Create imported target clangTidyAbseilModule
+add_library(clangTidyAbseilModule SHARED IMPORTED)
+
+# Create imported target clangTidyAlteraModule
+add_library(clangTidyAlteraModule SHARED IMPORTED)
+
+# Create imported target clangTidyBoostModule
+add_library(clangTidyBoostModule SHARED IMPORTED)
+
+# Create imported target clangTidyBugproneModule
+add_library(clangTidyBugproneModule SHARED IMPORTED)
+
+# Create imported target clangTidyCERTModule
+add_library(clangTidyCERTModule SHARED IMPORTED)
+
+# Create imported target clangTidyConcurrencyModule
+add_library(clangTidyConcurrencyModule SHARED IMPORTED)
+
+# Create imported target clangTidyCppCoreGuidelinesModule
+add_library(clangTidyCppCoreGuidelinesModule SHARED IMPORTED)
+
+# Create imported target clangTidyDarwinModule
+add_library(clangTidyDarwinModule SHARED IMPORTED)
+
+# Create imported target clangTidyFuchsiaModule
+add_library(clangTidyFuchsiaModule SHARED IMPORTED)
+
+# Create imported target clangTidyGoogleModule
+add_library(clangTidyGoogleModule SHARED IMPORTED)
+
+# Create imported target clangTidyHICPPModule
+add_library(clangTidyHICPPModule SHARED IMPORTED)
+
+# Create imported target clangTidyLinuxKernelModule
+add_library(clangTidyLinuxKernelModule SHARED IMPORTED)
+
+# Create imported target clangTidyLLVMModule
+add_library(clangTidyLLVMModule SHARED IMPORTED)
+
+# Create imported target clangTidyLLVMLibcModule
+add_library(clangTidyLLVMLibcModule SHARED IMPORTED)
+
+# Create imported target clangTidyMiscModule
+add_library(clangTidyMiscModule SHARED IMPORTED)
+
+# Create imported target clangTidyModernizeModule
+add_library(clangTidyModernizeModule SHARED IMPORTED)
+
+# Create imported target clangTidyMPIModule
+add_library(clangTidyMPIModule SHARED IMPORTED)
+
+# Create imported target clangTidyObjCModule
+add_library(clangTidyObjCModule SHARED IMPORTED)
+
+# Create imported target clangTidyOpenMPModule
+add_library(clangTidyOpenMPModule SHARED IMPORTED)
+
+# Create imported target clangTidyPerformanceModule
+add_library(clangTidyPerformanceModule SHARED IMPORTED)
+
+# Create imported target clangTidyPortabilityModule
+add_library(clangTidyPortabilityModule SHARED IMPORTED)
+
+# Create imported target clangTidyReadabilityModule
+add_library(clangTidyReadabilityModule SHARED IMPORTED)
+
+# Create imported target clangTidyZirconModule
+add_library(clangTidyZirconModule SHARED IMPORTED)
+
+# Create imported target clangTidyPlugin
+add_library(clangTidyPlugin SHARED IMPORTED)
+
+# Create imported target clangTidyMain
+add_library(clangTidyMain SHARED IMPORTED)
+
+# Create imported target clang-tidy
+add_executable(clang-tidy IMPORTED)
+
+# Create imported target clangTidyUtils
+add_library(clangTidyUtils SHARED IMPORTED)
+
+# Create imported target clangChangeNamespace
+add_library(clangChangeNamespace SHARED IMPORTED)
+
+# Create imported target clang-change-namespace
+add_executable(clang-change-namespace IMPORTED)
+
+# Create imported target clangDoc
+add_library(clangDoc SHARED IMPORTED)
+
+# Create imported target clang-doc
+add_executable(clang-doc IMPORTED)
+
+# Create imported target clangIncludeFixer
+add_library(clangIncludeFixer SHARED IMPORTED)
+
+# Create imported target clangIncludeFixerPlugin
+add_library(clangIncludeFixerPlugin SHARED IMPORTED)
+
+# Create imported target clang-include-fixer
+add_executable(clang-include-fixer IMPORTED)
+
+# Create imported target findAllSymbols
+add_library(findAllSymbols SHARED IMPORTED)
+
+# Create imported target find-all-symbols
+add_executable(find-all-symbols IMPORTED)
+
+# Create imported target clangMove
+add_library(clangMove SHARED IMPORTED)
+
+# Create imported target clang-move
+add_executable(clang-move IMPORTED)
+
+# Create imported target clangQuery
+add_library(clangQuery SHARED IMPORTED)
+
+# Create imported target clang-query
+add_executable(clang-query IMPORTED)
+
+# Create imported target pp-trace
+add_executable(pp-trace IMPORTED)
+
+# Create imported target clangdSupport
+add_library(clangdSupport SHARED IMPORTED)
+
+# Create imported target clangDaemon
+add_library(clangDaemon SHARED IMPORTED)
+
+# Create imported target clangDaemonTweaks
+add_library(clangDaemonTweaks SHARED IMPORTED)
+
+# Create imported target clangd
+add_executable(clangd IMPORTED)
+
+# Create imported target clangdRemoteIndex
+add_library(clangdRemoteIndex SHARED IMPORTED)
 
 # Create imported target libclang
 add_library(libclang SHARED IMPORTED)
