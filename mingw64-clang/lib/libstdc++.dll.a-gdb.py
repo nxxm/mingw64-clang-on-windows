@@ -1,5 +1,5 @@
 # -*- python -*-
-# Copyright (C) 2009-2020 Free Software Foundation, Inc.
+# Copyright (C) 2009-2021 Free Software Foundation, Inc.
 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -19,8 +19,8 @@ import gdb
 import os
 import os.path
 
-pythondir = '/R/winlibs64_stage/inst_gcc-10.2.0/share/gcc/share/gcc-10.2.0/python'
-libdir = '/R/winlibs64_stage/inst_gcc-10.2.0/share/gcc/lib/../lib'
+pythondir = '/R/winlibs64_stage/inst_gcc-11.1.0/share/gcc/share/gcc-11.1.0/python'
+libdir = '/R/winlibs64_stage/inst_gcc-11.1.0/share/gcc/lib/../lib'
 
 # This file might be loaded when there is no current objfile.  This
 # can happen if the user loads it manually.  In this case we don't

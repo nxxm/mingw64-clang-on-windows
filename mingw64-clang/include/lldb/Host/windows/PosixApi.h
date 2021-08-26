@@ -14,10 +14,6 @@
 #if !defined(_WIN32)
 #error "windows/PosixApi.h being #included on non Windows system!"
 #endif
-#ifdef __MINGW32__
-#include <stdint.h>
-#include <sys/types.h>
-#endif
 
 // va_start, va_end, etc macros.
 #include <stdarg.h>
@@ -102,17 +98,14 @@ typedef uint32_t pid_t;
 // custom implementations.
 int vasprintf(char **ret, const char *fmt, va_list ap);
 char *strcasestr(const char *s, const char *find);
-char *realpath(const char *name, char *resolved);
 
 #ifdef _MSC_VER
 
 char *basename(char *path);
 char *dirname(char *path);
 
-#ifndef __MINGW32__
 int strcasecmp(const char *s1, const char *s2);
 int strncasecmp(const char *s1, const char *s2, size_t n);
-#endif
 
 #endif // _MSC_VER
 

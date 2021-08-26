@@ -1,6 +1,6 @@
-This is gdc.info, produced by makeinfo version 6.7 from gdc.texi.
+This is gdc.info, produced by makeinfo version 6.8 from gdc.texi.
 
-Copyright (C) 2006-2020 Free Software Foundation, Inc.
+Copyright (C) 2006-2021 Free Software Foundation, Inc.
 
    Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -14,7 +14,7 @@ START-INFO-DIR-ENTRY
 END-INFO-DIR-ENTRY
 
 
-   Copyright (C) 2006-2020 Free Software Foundation, Inc.
+   Copyright (C) 2006-2021 Free Software Foundation, Inc.
 
    Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -1420,12 +1420,12 @@ These options affect the runtime behavior of programs compiled with
      'ident'
           Turns on compilation of 'version' code identified by IDENT.
 
-'-fno-weak'
-     Turns off emission of instantiated declarations that can be defined
-     in multiple objects as weak or one-only symbols.  The default is to
-     emit all public symbols as weak, unless the target lacks support
-     for weak symbols.  Disabling this option means that common symbols
-     are instead put in COMDAT or become private.
+'-fno-weak-templates'
+     Turns off emission of declarations that can be defined in multiple
+     objects as weak symbols.  The default is to emit all public symbols
+     as weak, unless the target lacks support for weak symbols.
+     Disabling this option means that common symbols are instead put in
+     COMDAT or become private.
 
 
 File: gdc.info,  Node: Directory Options,  Next: Code Generation,  Prev: Runtime Options,  Up: Invoking gdc
@@ -1638,6 +1638,10 @@ prevent compilation of the program.
      that is part of the D language, but not implemented by the
      compiler, won't get reported.
 
+'-Wno-varargs'
+     Do not warn upon questionable usage of the macros used to handle
+     variable arguments like 'va_start'.
+
 '-fignore-unknown-pragmas'
      Turns off errors for unsupported pragmas.
 
@@ -1659,9 +1663,6 @@ prevent compilation of the program.
 
      'all'
           List information on all language changes.
-     'checkimports'
-          Give deprecation messages about '-ftransition=import'
-          anomalies.
      'complex'
           List all usages of complex or imaginary types.
      'dip1000'
@@ -1670,15 +1671,6 @@ prevent compilation of the program.
           Implements <http://wiki.dlang.org/DIP25> (experimental).
      'field'
           List all non-mutable fields which occupy an object instance.
-     'import'
-          Tells the compiler to revert to using an old lookup behavior
-          for resolving unqualified symbol names, where this was done in
-          a single pass, ignoring any protection attributes.  The
-          default name lookup strategy is to use two passes, the first
-          ignoring imported declarations, and the second only looking at
-          imports.  The protection ('private', 'package', 'protected')
-          of symbols is also enforced to resolve any conflicts between
-          private and public symbols.
      'nogc'
           List all hidden GC allocations.
      'tls'
@@ -1767,9 +1759,9 @@ Index
 * -fdoc-inc:                             Code Generation.     (line  92)
 * -fdruntime:                            Runtime Options.     (line  58)
 * -fdump-d-original:                     Developer Options.   (line  10)
-* -fignore-unknown-pragmas:              Warnings.            (line  55)
+* -fignore-unknown-pragmas:              Warnings.            (line  59)
 * -finvariants:                          Runtime Options.     (line  66)
-* -fmax-errors:                          Warnings.            (line  58)
+* -fmax-errors:                          Warnings.            (line  62)
 * -fmodule-file:                         Directory Options.   (line  28)
 * -fmoduleinfo:                          Runtime Options.     (line  69)
 * -fno-all-instantiations:               Runtime Options.     (line  10)
@@ -1778,7 +1770,7 @@ Index
 * -fno-builtin:                          Runtime Options.     (line  40)
 * -fno-debug:                            Runtime Options.     (line  46)
 * -fno-druntime:                         Runtime Options.     (line  58)
-* -fno-ignore-unknown-pragmas:           Warnings.            (line  55)
+* -fno-ignore-unknown-pragmas:           Warnings.            (line  59)
 * -fno-invariants:                       Runtime Options.     (line  66)
 * -fno-moduleinfo:                       Runtime Options.     (line  69)
 * -fno-postconditions:                   Runtime Options.     (line  82)
@@ -1786,20 +1778,20 @@ Index
 * -fno-release:                          Runtime Options.     (line  88)
 * -fno-rtti:                             Runtime Options.     (line  99)
 * -fno-switch-errors:                    Runtime Options.     (line 104)
-* -fno-syntax-only:                      Warnings.            (line  64)
+* -fno-syntax-only:                      Warnings.            (line  68)
 * -fno-unittest:                         Runtime Options.     (line 110)
-* -fno-weak:                             Runtime Options.     (line 124)
+* -fno-weak-templates:                   Runtime Options.     (line 124)
 * -fonly:                                Runtime Options.     (line  77)
 * -fpostconditions:                      Runtime Options.     (line  82)
 * -fpreconditions:                       Runtime Options.     (line  85)
 * -frelease:                             Runtime Options.     (line  88)
 * -frtti:                                Runtime Options.     (line  99)
 * -fswitch-errors:                       Runtime Options.     (line 104)
-* -fsyntax-only:                         Warnings.            (line  64)
-* -ftransition:                          Warnings.            (line  70)
+* -fsyntax-only:                         Warnings.            (line  68)
+* -ftransition:                          Warnings.            (line  74)
 * -funittest:                            Runtime Options.     (line 110)
 * -fversion:                             Runtime Options.     (line 114)
-* -fweak:                                Runtime Options.     (line 124)
+* -fweak-templates:                      Runtime Options.     (line 124)
 * -H:                                    Code Generation.     (line  10)
 * -Hd:                                   Code Generation.     (line  16)
 * -Hf:                                   Code Generation.     (line  21)
@@ -1865,6 +1857,8 @@ Index
                                                               (line   6)
 * suppressing warnings:                  Warnings.            (line   6)
 * warning messages:                      Warnings.            (line   6)
+* Wno-varargs:                           Warnings.            (line  55)
+* Wvarargs:                              Warnings.            (line  55)
 
 
 
@@ -1875,12 +1869,12 @@ Node: GNU Free Documentation License39253
 Node: Invoking gdc64377
 Node: Input and Output files65252
 Node: Runtime Options66600
-Node: Directory Options71657
-Node: Code Generation74080
-Node: Warnings77522
-Node: Linking81398
-Node: Developer Options83071
-Node: Index83821
+Node: Directory Options71641
+Node: Code Generation74064
+Node: Warnings77506
+Node: Linking80856
+Node: Developer Options82529
+Node: Index83279
 
 End Tag Table
 
